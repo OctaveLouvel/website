@@ -1,8 +1,82 @@
-body{
-    background-color: aqua;
+@font-face {
+  font-family: m6x11;
+  src: url(../font/m6x11plus.ttf);
 }
 
+@keyframes myAnim {
+	0% {
+		transform: scale(0.5);
+	}
 
-a{
-    color: red;
+	100% {
+		transform: scale(1);
+	}
+}
+
+body{
+  background-color: #faf6d4;
+  font-size: 36px;
+  font-family: m6x11;
+  color: #a2592b;
+}
+
+p{
+  font-size: 18px;
+  margin: 0;
+}
+
+h1{
+  font-weight: 100;
+  font-size: 68px;
+}
+
+h2{
+  font-weight: 100;
+  font-size: 54px;
+}
+
+h3{
+  margin: 0;
+  font-weight: 100;
+  font-size: 36px;
+}
+
+.content{
+  margin: 4em 10% 0 10%;
+  columns: 2;
+  animation: myAnim 2s ease 0s 1 normal none;
+}
+
+.box{
+  columns: 2;
+  text-align: center;
+  padding: 2em;
+  border: 10px solid #6b97ab;
+}
+
+.box h1{
+  color: #a2592b;
+  font-size: 68px;
+  margin: 0;
+}
+
+.main-box img{
+  width: 300px;
+  image-rendering: optimizeSpeed;
+  image-rendering: pixelated;
+}
+
+.progress-bar{
+  background-color: #faf6d4;
+  height: 24px;
+  border: 4px solid #a2592b;
+}
+
+.inner-progress-bar{
+  background-color: #a2592b;
+  height: 24px;
+}
+
+.inner-progress-bar p{
+  color: #faf6d4;
 }
