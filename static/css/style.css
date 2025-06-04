@@ -3,16 +3,6 @@
   src: url(../font/m6x11plus.ttf);
 }
 
-@keyframes myAnim {
-	0% {
-		transform: scale(0.5);
-	}
-
-	100% {
-		transform: scale(1);
-	}
-}
-
 body{
   background-color: #faf6d4;
   font-size: 36px;
@@ -43,8 +33,9 @@ h3{
 
 .content{
   margin: 4em 10% 0 10%;
-  columns: 2;
-  animation: myAnim 2s ease 0s 1 normal none;
+  display: flex;
+  align-items: flex-start;
+  gap: 2em;
 }
 
 .box{
