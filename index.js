@@ -4,6 +4,8 @@ const pngText = document.getElementById("pnj-text");
 const menu = document.getElementById("menu");
 const content = document.getElementById("content");
 const menuSelection = document.getElementById("menu-selection");
+const clock = document.getElementById("clock");
+const date = document.getElementById("date")
 
 //States
 let isMenuSelected = true;
@@ -107,11 +109,34 @@ function setupKeyboard() {
     });
 }
 
+function setDate(){
+    let now = new Date();
+    date.textContent = String(now.getDay()+1) + "." + String(now.getMonth()+1) + "." + String(now.getFullYear());
+}
+
+function upDateClock(){
+    let now = new Date();
+    let hours = now.getHours().toString().padStart(2,0);
+    let minutes = now.getMinutes().toString().padStart(2,0);
+    clock.textContent = hours + ":" + minutes;
+}
+
+async function updateBattery() {
+    if(!("getBattery" in navigator)) return;
+    let battery = await navigator.getBattery();
+    console.log(battery.level);
+}
+
+//Execution
 function init() {
     say();
     setupSelection();
     setupKeyboard();
+    setDate();
     Menu.render();
+    upDateClock();
+    setInterval(upDateClock,1000)
+    updateBattery();
 }
 
 init();

@@ -14,10 +14,9 @@
     <section class="hud">
         <div class="user-info">
             <h3>Octave Louvel</h3>
-            <p>lvl 100</p>
-            <div class="progress-bar">
-                <div class="inner-progress-bar"></div>
-            </div>
+            <h3>lvl 100</h3>
+            <h3>4 coins</h3>
+            <div class="progress-bar"><div class="inner-progress-bar"></div></div>
         </div>
         <div id="menu" class="menu">
             <div id="menu-selection">
@@ -25,16 +24,20 @@
         </div>
         <div id="skip-button" class="pnj">
             <img src="static/img/icon.png" alt="avatar">
-            <div class="skip">
+            <div style="width: 100%;">
                 <h3 id="pnj-text"></h3>
-            </div>   
+            </div>
         </div>
     </section>
     <section id="content" class="content">
         <div class="status-bar">
-            <p>08:04</p>
-            <p>10.01.2025</p>
-            <p>94%</p>
+            <p id="date">10.01.2025</p>
+            <p id="clock">08:04</p>
+            <div>
+                <div class="progress-bar">
+                    <div class="inner-progress-bar"><p style="color: aliceblue;">94%</p> </div>
+                </div>
+            </div>
         </div>
         <div class="viewport">
             Viewport
