@@ -11,48 +11,36 @@
 </head>
 
 <body>
-    <div class="content">
-        <div class="main-box">
-            <img src="static/img/icon.png" alt="Head pixel art">
-            <h1>
-            octave <br>louvel
-            </h1>
-            <p>
-                Programer
-            </p>
-        </div>
-
-
-        <div class="box">
-            <div>
-                <h3>C++</h3>
-                <div class="progress-bar">
-                    <div class="inner-progress-bar" style="width:80%">
-                        <p>80</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div>
-                <h3>HTML</h3>
-                <div class="progress-bar">
-                    <div class="inner-progress-bar" style="width:60%">
-                        <p>60</p>
-                    </div>
-                </div>
+    <section class="hud">
+        <div class="user-info">
+            <h3>Octave Louvel</h3>
+            <p>lvl 100</p>
+            <div class="progress-bar">
+                <div class="inner-progress-bar"></div>
             </div>
         </div>
-
-        <div class="box">
-            ici icones avec ce que je maitrise
-            <p>HTML, CSS, PHP, Python C++, PostgreSQL, Arduino, Maths, Physics, Electronics, Godot, Unity, Unix, Git, Github/lab, docker, Proxmox, Wordpress</p>
+        <div id="menu" class="menu">
+            <div id="menu-selection">
+            </div>
         </div>
-
-        <div class="box">
-            ici mes etudes
-            <p>Bac Maths Physique mention très bien, 2 ans de Cursus universitaire préparatoire aux grandes écoles en maths informatique physique et éléctronique</p>
+        <div id="skip-button" class="pnj">
+            <img src="static/img/icon.png" alt="avatar">
+            <div class="skip">
+                <h3 id="pnj-text"></h3>
+            </div>   
         </div>
-    </div>
+    </section>
+    <section id="content" class="content">
+        <div class="status-bar">
+            <p>08:04</p>
+            <p>10.01.2025</p>
+            <p>94%</p>
+        </div>
+        <div class="viewport">
+            Viewport
+        </div>
+    </section>
+
     <script src="index.js"></script>
 </body>
 </html>
