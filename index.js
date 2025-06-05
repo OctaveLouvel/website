@@ -5,7 +5,8 @@ const menu = document.getElementById("menu");
 const content = document.getElementById("content");
 const menuSelection = document.getElementById("menu-selection");
 const clock = document.getElementById("clock");
-const date = document.getElementById("date")
+const date = document.getElementById("date");
+const batteryText = document.getElementById("battery");
 
 //States
 let isMenuSelected = true;
@@ -125,6 +126,7 @@ async function updateBattery() {
     if(!("getBattery" in navigator)) return;
     let battery = await navigator.getBattery();
     console.log(battery.level);
+    batteryText.textContent = battery.level;
 }
 
 //Execution
