@@ -23,6 +23,7 @@ body{
 
   cursor:default;
   user-select: none;
+  animation: flicker 0.15s infinite;
 
 }
 
@@ -89,6 +90,20 @@ h3{
   border-radius: 0;
   justify-content: center;
   align-items: center;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(18, 16, 16, 0.0) 0px,
+      rgba(18, 16, 16, 0.0) 1px,
+      rgba(40, 38, 38, 0.25) 1px,
+      rgba(40, 38, 38, 0.25) 2px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,0,0,0.06),
+      rgba(0,255,0,0.02),
+      rgba(0,0,255,0.06)
+    );
 }
 
 .menu .title{
@@ -205,27 +220,27 @@ h3{
 }
 
 @keyframes flicker {
-  0% { opacity: 0.95; }
-  5% { opacity: 0.85; }
-  10% { opacity: 0.92; }
-  15% { opacity: 0.88; }
-  20% { opacity: 0.97; }
-  25% { opacity: 0.90; }
-  30% { opacity: 0.93; }
-  35% { opacity: 0.87; }
-  40% { opacity: 0.96; }
-  45% { opacity: 0.91; }
-  50% { opacity: 0.94; }
-  55% { opacity: 0.89; }
-  60% { opacity: 0.98; }
-  65% { opacity: 0.86; }
-  70% { opacity: 0.95; }
-  75% { opacity: 0.90; }
-  80% { opacity: 0.93; }
-  85% { opacity: 0.88; }
-  90% { opacity: 0.97; }
-  95% { opacity: 0.91; }
-  100% { opacity: 0.94; }
+  0% { opacity: 0.98; }
+  5% { opacity: 0.95; }
+  10% { opacity: 0.97; }
+  15% { opacity: 0.96; }
+  20% { opacity: 0.99; }
+  25% { opacity: 0.97; }
+  30% { opacity: 0.98; }
+  35% { opacity: 0.96; }
+  40% { opacity: 0.99; }
+  45% { opacity: 0.97; }
+  50% { opacity: 0.98; }
+  55% { opacity: 0.96; }
+  60% { opacity: 0.99; }
+  65% { opacity: 0.95; }
+  70% { opacity: 0.98; }
+  75% { opacity: 0.97; }
+  80% { opacity: 0.98; }
+  85% { opacity: 0.96; }
+  90% { opacity: 0.99; }
+  95% { opacity: 0.97; }
+  100% { opacity: 0.98; }
 }
 
 
@@ -306,8 +321,8 @@ h3{
   right: 0;
   background: rgba(18, 16, 16, 0.1); /* 0.1 = 90% transparent */
   opacity: 0;
-  z-index: 2;
-  pointer-events: none;
+  z-index: 0;
+  pointer-events:none;
 }
 
 .viewport::before {
@@ -333,9 +348,9 @@ h3{
       rgba(0,255,0,0.02),
       rgba(0,0,255,0.06)
     );
-  z-index: 2;
+  z-index: 0;
   background-size: 100% 2px, 3px 100%;
-  pointer-events: none;
+  pointer-events:all;
 }
 
 .screen{
@@ -356,7 +371,7 @@ h3{
   animation-fill-mode: forwards;
 }
 
-/* Scintillement seulement quand allumé */
+/*
 .viewport.on::after {
-  animation: flicker 0.45s infinite;
-}
+  animation: flicker 0.15s infinite;
+} */
