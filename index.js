@@ -8,13 +8,21 @@ const clock = document.getElementById("clock");
 const date = document.getElementById("date");
 const batteryText = document.getElementById("battery");
 
+//  Jeux -> Menu avec les differents minis jeux
+//  Etudes -> Road map avec quetes principales et side quest
+//  Projects -> 
+//  Experiences -> 
+//  Competences -> Skill tree
+
+
 //States
 let isMenuSelected = true;
+let isScreenOn = false;
 
 const Menu = {
     numberOfRows: 1,
     selectedElement: 1,
-    elements: ["Jeux", "Competences", "Michel", "Bernard"],
+    elements: ["Competences", "Projects", "Mini-Jeux", "Experiences", "Etudes"],
     selectNextElement() {
         let next = (this.selectedElement + 1) % this.elements.length;
         this.render(next);
@@ -45,10 +53,11 @@ const Menu = {
 
 
 async function say() {
-    await speak(pngText, "Salut, moi c'est Octave ! ⏷");
-    await speak(pngText, "Bienvenue sur mon portfolio interactif ⏷");
-    await speak(pngText, "Il y aura bientôt mon parcours et des minis jeux ici ⏷");
-    await speak(pngText, "Je te conseille de revenir dans quelque jours ⏷");
+    await speak(pngText, "Salut, moi c'est Octave ! <...>");
+    await speak(pngText, "Bienvenue sur mon portfolio interactif <...>");
+    await speak(pngText, "Pour commencer clique sur le menu de séléction et utilise les flèches <...>");
+    await speak(pngText, "Il y aura bientôt mon parcours et des minis jeux ici <...>");
+    await speak(pngText, "Je te conseille de revenir dans quelque jours <...>");
     await speak(pngText, "Quand j'aurais fini de faire le site !");
 }
 
@@ -106,6 +115,8 @@ function setupKeyboard() {
             Menu.selectNextElement();
         } else if (event.key === "ArrowUp" || event.key === "z" || event.key === "w") {
             Menu.selectPrevElement();
+        }else if (event.key === "Enter" || event.key === "ArrowRight"){
+            toggleScreen();
         }
     });
 }
@@ -129,6 +140,25 @@ async function updateBattery() {
     batteryText.textContent = battery.level;
 }
 
+function toggleScreen() {
+    const screen = document.querySelector('.screen');
+    const viewport = document.querySelector('.viewport');
+    
+    if (isScreenOn) {
+        // Allumer l'écran
+        screen.classList.remove('off');
+        screen.classList.add('on');
+        viewport.classList.add('on');
+    } else {
+        // Éteindre l'écran
+        screen.classList.remove('on');
+        screen.classList.add('off');
+        viewport.classList.remove('on');
+    }
+
+    isScreenOn = !isScreenOn;
+}
+
 //Execution
 function init() {
     say();
@@ -139,6 +169,7 @@ function init() {
     upDateClock();
     setInterval(upDateClock,1000)
     updateBattery();
+    toggleScreen();
 }
 
 init();
