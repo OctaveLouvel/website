@@ -22,7 +22,7 @@ let isScreenOn = false;
 const Menu = {
     numberOfRows: 1,
     selectedElement: 1,
-    elements: ["Competences", "Projects", "Mini-Jeux", "Experiences", "Etudes"],
+    elements: ["Competences", "Projets", "Mini-Jeux", "Experiences", "Etudes"],
     selectNextElement() {
         let next = (this.selectedElement + 1) % this.elements.length;
         this.render(next);
@@ -137,7 +137,7 @@ async function updateBattery() {
     if(!("getBattery" in navigator)) return;
     let battery = await navigator.getBattery();
     console.log(battery.level);
-    batteryText.textContent = battery.level;
+    batteryText.textContent = String(battery.level*100) +"%";
 }
 
 function toggleScreen() {

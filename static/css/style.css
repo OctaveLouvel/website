@@ -23,8 +23,6 @@ body{
 
   cursor:default;
   user-select: none;
-  animation: flicker 0.15s infinite;
-
 }
 
 :root {
@@ -76,20 +74,25 @@ h3{
   grid-template-columns: 100%;
 }
 
+.menu-border{
+  background-color: #252527;
+  padding: 1em;
+}
+
 .menu{
+  color: #051524;
   display: grid;
+  border-radius: 5px;
   grid-template-rows: 20% 70% 10%;
   grid-template-columns: 100%;
   overflow: hidden;
-  background-color: #AFBCAA;
-  color: #051524;
   height: 100%;
-  border: outset 1em #252527;
   box-sizing: border-box;
   box-shadow: 0 0 0 0;
-  border-radius: 0;
   justify-content: center;
   align-items: center;
+  animation: flicker 0.15s infinite;
+  
   background:
     repeating-linear-gradient(
       to bottom,
@@ -104,6 +107,7 @@ h3{
       rgba(0,255,0,0.02),
       rgba(0,0,255,0.06)
     );
+    background-color: #AFBCAA;
 }
 
 .menu .title{
@@ -140,7 +144,7 @@ h3{
 }
 
 .status-bar{
-  background-color: #6A7169;
+  background-color: #f9f5f0;
   display: flex;
   justify-content:space-between;
   align-items: center;
@@ -308,7 +312,6 @@ h3{
   height: 100%;
   position: relative;
   overflow: hidden;
-  border: 2px solid #666;
 }
 
 .viewport::after {
@@ -371,7 +374,7 @@ h3{
   animation-fill-mode: forwards;
 }
 
-/*
+
 .viewport.on::after {
   animation: flicker 0.15s infinite;
-} */
+}
