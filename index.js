@@ -14,7 +14,6 @@ const batteryText = document.getElementById("battery");
 //  Experiences -> 
 //  Competences -> Skill tree
 
-
 //States
 let isMenuSelected = true;
 let isScreenOn = false;
@@ -22,7 +21,7 @@ let isScreenOn = false;
 const Menu = {
     numberOfRows: 1,
     selectedElement: 1,
-    elements: ["Competences", "Projets", "Mini-Jeux", "Experiences", "Etudes"],
+    elements: ["Competences", "Projets", "Experiences", "Etudes"],
     selectNextElement() {
         let next = (this.selectedElement + 1) % this.elements.length;
         this.render(next);
@@ -56,7 +55,7 @@ async function say() {
     await speak(pngText, "Salut, moi c'est Octave ! <...>");
     await speak(pngText, "Bienvenue sur mon portfolio interactif <...>");
     await speak(pngText, "Pour commencer clique sur le menu de séléction et utilise les flèches <...>");
-    await speak(pngText, "Il y aura bientôt mon parcours et des minis jeux ici <...>");
+    await speak(pngText, "Il y aura bientôt mon parcours ici <...>");
     await speak(pngText, "Je te conseille de revenir dans quelque jours <...>");
     await speak(pngText, "Quand j'aurais fini de faire le site !");
 }
@@ -116,7 +115,7 @@ function setupKeyboard() {
         } else if (event.key === "ArrowUp" || event.key === "z" || event.key === "w") {
             Menu.selectPrevElement();
         }else if (event.key === "Enter" || event.key === "ArrowRight"){
-            toggleScreen();
+            toggleScreen(Menu.selectedElement);
         }
     });
 }
@@ -136,27 +135,36 @@ function upDateClock(){
 async function updateBattery() {
     if(!("getBattery" in navigator)) return;
     let battery = await navigator.getBattery();
-    console.log(battery.level);
+    if(battery.level === NaN) return;
     batteryText.textContent = String(battery.level*100) +"%";
 }
 
-function toggleScreen() {
+function toggleScreen(elementSelected) {
+    console.log(elementSelected);
     const screen = document.querySelector('.screen');
     const viewport = document.querySelector('.viewport');
     
-    if (isScreenOn) {
+    if (!isScreenOn) {
         // Allumer l'écran
+        whatMenuIsOn = document.getElementById(`screen${elementSelected}`);
+        whatMenuIsOn.style.display = "block";
         screen.classList.remove('off');
         screen.classList.add('on');
         viewport.classList.add('on');
+        isScreenOn = true;
     } else {
-        // Éteindre l'écran
-        screen.classList.remove('on');
-        screen.classList.add('off');
-        viewport.classList.remove('on');
+        // Changer l'affichage
+        whatMenuIsOn.style.display = "none";
+        whatMenuIsOn = document.getElementById(`screen${elementSelected}`);
+        whatMenuIsOn.style.display = "block";
     }
+    /* 
+    whatMenuIsOn.style.display = "none";
+    screen.classList.remove('on');
+    screen.classList.add('off');
+    viewport.classList.remove('on'); */
 
-    isScreenOn = !isScreenOn;
+    //isScreenOn = !isScreenOn;
 }
 
 //Execution
@@ -169,7 +177,6 @@ function init() {
     upDateClock();
     setInterval(upDateClock,1000)
     updateBattery();
-    toggleScreen();
 }
 
 init();
